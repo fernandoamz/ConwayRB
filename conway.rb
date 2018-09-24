@@ -112,22 +112,41 @@ class Conway
 
 end
 
+def starting(numberGenerations)
+    for i in 0...numberGenerations
+        Conway.new.generaciones
+        puts "Generacion número: #{i+1}"
+    end
+end
+
 def play
 
-    puts "Iniciar generación ¿y/n?"
+    puts "Iniciar nueva generación ¿y/n?"
     response = gets.chomp
 
     if response == "y"
 
         puts "¿Cuantas generaciones deseas ver?"
         numberGenerations = gets.chomp.to_i
-    
-        for i in 0...numberGenerations
-            Conway.new.generaciones
-            puts "Generacion número: #{i+1}"
+        starting(numberGenerations)
+
+        puts "¿Crear más generaciones?"
+        result = gets.chomp
+
+        if result == "s"
+            puts "¿Cuantas generaciones deseas agregar?"
+            moreGenerations = gets.chomp
+            starting(moreGenerations)
+
+        elsif result == "n"
+            play
         end
-        play
+
     elsif response == "n"
+        return
+    elsif response != "n" && response != "s"
+        puts "debes seleccionar al menos una opción"
+        play
     end
 end
 

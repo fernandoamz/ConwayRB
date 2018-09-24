@@ -69,7 +69,7 @@ class Conway
         end
     end
 
-    def generaciones     
+    def generaciones   
         for x in 0...muestras.size
             for y in 0...muestras.size
 
@@ -101,10 +101,15 @@ class Conway
                 muestras[x][y] = result;
 
             end
-
-            return muestras
+            #return muestras
         end
+
+        print "------------------- \n"
+        print muestras
+        print "------------------- \n"
+
     end
+
 end
 
 def play
@@ -113,11 +118,16 @@ def play
     response = gets.chomp
 
     if response == "y"
-        nextGeneration = true
-        print Conway.new.generaciones
+
+        puts "¿Cuantas generaciones deseas ver?"
+        numberGenerations = gets.chomp.to_i
+    
+        for i in 0...numberGenerations
+            Conway.new.generaciones
+            puts "Generacion número: #{i+1}"
+        end
         play
     elsif response == "n"
-        nextGeneration = false
     end
 end
 

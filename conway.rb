@@ -130,16 +130,16 @@ def play
         numberGenerations = gets.chomp.to_i
         starting(numberGenerations)
 
-        puts "¿Crear más generaciones?"
+        puts "¿Crear más generaciones y/n?"
         result = gets.chomp
 
-        if result == "s"
+        if result == "y"
             puts "¿Cuantas generaciones deseas agregar?"
-            moreGenerations = gets.chomp
-            starting(moreGenerations)
-
-        elsif result == "n"
+            numberGenerations = gets.chomp.to_i
+            starting(numberGenerations)
             play
+        elsif result == "n"
+            return
         end
 
     elsif response == "n"
